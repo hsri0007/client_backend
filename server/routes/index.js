@@ -1,4 +1,4 @@
-// const IndexController = require("../controllers/indexControllers/IndexController.js");
+const IndexController = require("../controllers/indexControllers/IndexController.js");
 const express = require("express");
 
 const router = express.Router();
