@@ -1,14 +1,15 @@
 // import { Op, Sequelize, QueryTypes, query } from "sequelize";
-import "dotenv/config";
+const dotenv = require("dotenv")
+dotenv.config()
 
 
-import { User, sequelize, Products , DashboardFolder, Dashboards} from "../../models/index.js";
-import bcrypt from "bcrypt";
+const { User, sequelize, Products , DashboardFolder, Dashboards} =  require("../../models/index.js");
+const bcrypt = require("bcrypt");
 
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 const saltRounds = 10;
 const secret = "sri";
-export default {
+module.exports= {
     async getAllproducts(req, res){
         try {
           return Products.findAll({

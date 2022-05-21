@@ -1,5 +1,5 @@
-import IndexController from "../controllers/indexControllers/IndexController.js";
-import express from "express";
+const IndexController = require("../controllers/indexControllers/IndexController.js");
+const express = require("express");
 
 const router = express.Router();
 
@@ -19,4 +19,4 @@ router.get("/dashboards/admin", IndexController.getAllDashBoardsforAdmin);
 router.post("/dashboards/add", IndexController.postDashBoard);
 router.post("/dashboards/update", IndexController.updateDashBoard);
 
-export default router;
+module.exports= router;

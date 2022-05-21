@@ -1,8 +1,8 @@
-import { Model, Sequelize } from "sequelize";
+const { Model, Sequelize } = require("sequelize");
 
 // const PROTECTED_ATTRIBUTES = ['password'];
 
-export default (sequelize, DataTypes) => {
+module.exports= (sequelize, DataTypes) => {
   class UserModel extends Model {
     toJSON() {
       // hide protected fields
