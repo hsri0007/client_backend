@@ -3,7 +3,7 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 
-const { User, sequelize, Products , DashboardFolder, Dashboards} =  require("../../models/index.js");
+const { User, sequelize, Products , DashboardFolder, Dashboards} =  require("../../models");
 const bcrypt = require("bcrypt");
 
 const jwt = require("jsonwebtoken");
