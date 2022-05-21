@@ -1,10 +1,11 @@
 // import { Op, Sequelize, QueryTypes, query } from "sequelize";
-require("dotenv").config();
+import "dotenv/config";
 
-import { User, sequelize, Products , DashboardFolder, Dashboards} from "../../models";
+
+import { User, sequelize, Products , DashboardFolder, Dashboards} from "../../models/index.js";
 import bcrypt from "bcrypt";
 
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 const saltRounds = 10;
 const secret = "sri";
 export default {

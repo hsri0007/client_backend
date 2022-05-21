@@ -1,11 +1,11 @@
-import UserModel from "./User";
-import ProductsModel from "./Products"
-import DashboardFolderModel from "./DashboardFolder"
-import DashboardsModel from "./Dashboards"
-const Sequelize = require("sequelize");
+import UserModel from "./User.js";
+import ProductsModel from "./Products.js"
+import DashboardFolderModel from "./DashboardFolder.js"
+import DashboardsModel from "./Dashboards.js"
+import Sequelize from "sequelize";
 
-const dotenv = require("dotenv");
-dotenv.config();
+import "dotenv/config";
+
 
 const { DB_NAME, DB_USERNAME, DB_PASSWORD, DB_HOST } = process.env
 console.log(process.env);
@@ -26,7 +26,7 @@ const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
   const DashboardFolder = DashboardFolderModel(sequelize, Sequelize);
   const Dashboards = DashboardsModel(sequelize, Sequelize);
 
-  module.exports = {
+  export  {
     sequelize,
     User,
     Products,

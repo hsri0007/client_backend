@@ -1,4 +1,4 @@
-import IndexController from "../controllers/indexControllers/IndexController";
+import IndexController from "../controllers/indexControllers/IndexController.js";
 import express from "express";
 
 const router = express.Router();

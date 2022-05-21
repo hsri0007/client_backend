@@ -1,9 +1,10 @@
 {
   "name": "backend",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "watch:dev": "nodemon",
-    "start": "node bin",
+    "start": "node server",
     "build": "npm-run-all clean transpile",
     "server": "node ./dist-server/bin/www",
     "dev": "NODE_ENV=development npm-run-all build server",

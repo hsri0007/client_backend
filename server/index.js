@@ -1,10 +1,11 @@
-import indexRouter from "./routes/index";
+import indexRouter from "./routes/index.js";
 import express from "express";
 import logger from "morgan";
 // import usersRouter from "./routes/users";
 // import adminRouter from "./routes/admin";
+import cors from "cors";
 const app = express();
-const cors = require("cors");
+
 
 
 app.use(cors({ origin: true }));
@@ -16,4 +17,4 @@ app.use("/api/v1", indexRouter);
 // app.use("/api/v1/users", usersRouter);
 // app.use("/api/v1/admin", adminRouter);
 
-export default app;
+app.listen(8000)
