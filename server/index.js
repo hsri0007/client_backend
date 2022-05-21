@@ -1,16 +1,19 @@
-const express = require('express');
-
+const indexRouter = require("./routes/index");
+const express = require("express");
+const logger = require("morgan");
+// import usersRouter from "./routes/users";
+// import adminRouter from "./routes/admin";
 const app = express();
-
-app.get('/', (req, res) => res.send('Home Page Routessssssssss'));
-
-app.get('/about', (req, res) => res.send('About Page Route'));
-
-app.get('/portfolio', (req, res) => res.send('Portfolio Page Route'));
-
-app.get('/contact', (req, res) => res.send('Contact Page Route'));
-
-const port = process.env.PORT || 3000;
+const cors = require("cors");
 
 
-app.listen(port, () => console.log(`Server running on ${port}, http://localhost:${port}`));
+app.use(cors({ origin: true }));
+app.use(express.json());
+app.use(logger("dev"));
+// app.use(express.urlencoded({ limit: "50mb", extended: true }));
+
+app.use("/api/v1", indexRouter);
+// app.use("/api/v1/users", usersRouter);
+// app.use("/api/v1/admin", adminRouter);
+
+app.listen(8000)
