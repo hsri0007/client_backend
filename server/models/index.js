@@ -14,6 +14,7 @@ console.log(process.env);
 const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
     host: DB_HOST,
     dialect: "mysql",
+    dialectModule: require('mysql2'),
     pool: {
       max: 10,
       min: 0,
