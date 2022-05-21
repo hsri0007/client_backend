@@ -1,7 +1,8 @@
-const IndexController = require("../controllers/indexControllers/IndexController.js");
+
 const express = require("express");
 
 const router = express.Router();
+const IndexController = require("../controllers/indexControllers/IndexController.js");
 
 // router.get("/products", IndexController.getAllproducts);
 // router.post("/products/add", IndexController.postProducts);
