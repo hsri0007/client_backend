@@ -1,20 +1,15 @@
-import indexRouter from "./routes/index.js";
-import express from "express";
-import logger from "morgan";
-// import usersRouter from "./routes/users";
-// import adminRouter from "./routes/admin";
-import cors from "cors";
+const express = require('express');
+
 const app = express();
 
+app.get('/', (req, res) => res.send('Home Page Route'));
 
+app.get('/about', (req, res) => res.send('About Page Route'));
 
-app.use(cors({ origin: true }));
-app.use(express.json());
-app.use(logger("dev"));
-// app.use(express.urlencoded({ limit: "50mb", extended: true }));
+app.get('/portfolio', (req, res) => res.send('Portfolio Page Route'));
 
-app.use("/api/v1", indexRouter);
-// app.use("/api/v1/users", usersRouter);
-// app.use("/api/v1/admin", adminRouter);
+app.get('/contact', (req, res) => res.send('Contact Page Route'));
 
-app.listen(8000)
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => console.log(`Server running on ${port}, http://localhost:${port}`));
