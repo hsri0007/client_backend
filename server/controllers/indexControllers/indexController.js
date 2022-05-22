@@ -33,7 +33,7 @@ module.exports= {
               });
         }
     },
-    async verifyuser(req, res){
+    async verifyuserToken(req, res){
         try {
           jwt.verify(req.body.token, secret, async(err, decoded) => {
             if (err) {
