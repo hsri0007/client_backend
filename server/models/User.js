@@ -35,8 +35,14 @@ module.exports= (sequelize, DataTypes) => {
       },
       email: {
         type: DataTypes.TEXT,
-        unique: true,
         allowNull: false,
+        validate: {
+          isEmail:true
+        },
+        unique: {
+            args: true,
+            msg: 'Email address already in use!'
+        }
       },
       password: {
         type: DataTypes.TEXT,
