@@ -399,4 +399,26 @@ module.exports= {
          
        }
     },
+    async updatePass(req, res){
+      console.log(req)
+       try {
+        const password = req.body.password;
+        const hash = await bcrypt.hash(password, saltRounds);
+        const data = await User.update({ password: hash}, {
+          where: { id: req.body.id },
+        });
+        return res.status(200).json({
+          success: true,
+          message: "Successfully updated",
+          data:[],
+        });
+       } catch (error) {
+         console.log(error)
+        return res.status(500).json({
+          success: false,
+          message: "Form data Invalid",
+        });
+         
+       }
+    },
 }

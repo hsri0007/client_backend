@@ -12,6 +12,7 @@ router.get("/products/admin", IndexControllers.getAllproductsbyAdmin);
 router.post("/auth/createuser", IndexControllers.createUser);
 router.post("/auth/loginuser", IndexControllers.loginUser);
 router.post("/auth/updateuser", IndexControllers.updateUser);
+router.post("/auth/updatepass", IndexControllers.updatePass);
 router.get("/dashboard_folders", IndexControllers.getAllDashBoardFolders);
 router.get("/dashboard_folders/admin", IndexControllers.getAllDashBoardsFoldersforAdmin);
 router.post("/dashboard_folders/add", IndexControllers.postDashBoardFolders);
