@@ -34,8 +34,9 @@ module.exports= {
         }
     },
     async verifyuserToken(req, res){
+      console.log(req.query.token)
         try {
-          jwt.verify(req.body.token, secret, async(err, decoded) => {
+          jwt.verify(req.query.token, secret, async(err, decoded) => {
             if (err) {
               return res.status(401).send({
                 message: "Unauthorized!",

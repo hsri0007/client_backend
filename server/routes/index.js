@@ -5,7 +5,7 @@ const router = express.Router();
 const IndexControllers = require("../controllers/indexControllers/indexController");
 
 router.get("/products", IndexControllers.getAllproducts);
-router.post("/users/verify", IndexControllers.verifyuserToken);
+router.get("/users/verify", IndexControllers.verifyuserToken);
 router.post("/products/add", IndexControllers.postProducts);
 router.post("/products/update", IndexControllers.updateProducts);
 router.get("/products/admin", IndexControllers.getAllproductsbyAdmin);
