@@ -33,6 +33,37 @@ module.exports= {
               });
         }
     },
+    async verifyuser(req, res){
+        try {
+          jwt.verify(req.body.token, secret, async(err, decoded) => {
+            if (err) {
+              return res.status(401).send({
+                message: "Unauthorized!",
+              });
+            }
+
+           const data =  await User.findOne({
+              where: {
+                id: decoded.id,
+              },
+            })
+
+
+            return res.status(200).json({
+              success: true,
+              message: "user",
+              final_obj:data,
+            });
+          
+          });           
+        } catch (error) {
+          console.log(error)
+            return res.status(500).json({
+                success: false,
+                message: "Some error occured",
+              });
+        }
+    },
     async getAllproductsbyAdmin(req, res){
         try {
           return Products.findAll()
@@ -226,6 +257,25 @@ module.exports= {
                 success: true,
                 message: "Dashboards",
                 final_obj:dashboard,
+              });
+            }).catch((error)=>console.log(error))
+            
+        } catch (error) {
+          console.log(error)
+            return res.status(500).json({
+                success: false,
+                message: "Some error occured",
+              });
+        }
+    },
+    async getUsersforAdmin(req, res){
+        try {
+          return User.findAll()
+            .then((usersdata) => {
+            return res.status(200).json({
+                success: true,
+                message: "Users",
+                final_obj:usersdata,
               });
             }).catch((error)=>console.log(error))
             
