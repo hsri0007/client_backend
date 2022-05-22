@@ -33,6 +33,10 @@ module.exports= (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
+      is_admin: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
       email: {
         type: DataTypes.TEXT,
         allowNull: false,
