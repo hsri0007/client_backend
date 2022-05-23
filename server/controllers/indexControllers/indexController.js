@@ -346,13 +346,16 @@ module.exports= {
                 is_admin:"false"
               });
               const token = jwt.sign({ id: data.id, email: req.body.email }, secret);
-           final_obj=data;
-           final_obj["accessToken"]=token 
+        
 
             return res.status(200).json({
-                success: true,
-                message: "User created",
-                data:final_obj,             
+              id: data.id,
+              name: data.name,
+              email: data.email,
+              type: data.type,
+              trial_date:data?.trial_date,
+              accessToken: token, 
+              is_admin:data.is_admin           
               });
             
         } catch (error) {
@@ -395,7 +398,8 @@ module.exports= {
                 email: user.email,
                 type: user.type,
                 accessToken: token,
-                trial_date:user?.trial_date
+                trial_date:user?.trial_date,
+                is_admin:user.is_admin  
               });
             })
             .catch((err) => {
