@@ -250,6 +250,30 @@ module.exports= {
               });
         }
     },
+    async getSingleDashBoards(req, res){
+        try {
+          return Dashboards.findOne({
+            where:{
+              is_active:1,
+              id:req.params.id
+            }
+          })
+            .then((dashboard) => {
+            return res.status(200).json({
+                success: true,
+                message: "Dashboards",
+                final_obj:dashboard,
+              });
+            }).catch((error)=>console.log(error))
+            
+        } catch (error) {
+          console.log(error)
+            return res.status(500).json({
+                success: false,
+                message: "Some error occured",
+              });
+        }
+    },
     async getAllDashBoardsforAdmin(req, res){
         try {
           return Dashboards.findAll()
@@ -318,7 +342,8 @@ module.exports= {
                 password: hash,
                 type: "TRIAL",
                 is_active:1,
-                trial_date:req.body.trial_date
+                trial_date:req.body.trial_date,
+                is_admin:"false"
               });
               const token = jwt.sign({ id: data.id, email: req.body.email }, secret);
            final_obj=data;

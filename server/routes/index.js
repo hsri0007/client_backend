@@ -20,6 +20,7 @@ router.post("/dashboard_folders/update", IndexControllers.updateDashBoardFolders
 router.get("/users/admin", IndexControllers.getUsersforAdmin);
 router.post("/users/update", IndexControllers.updateUser);
 router.get("/dashboards", IndexControllers.getAllDashBoards);
+router.get("/dashboards/:id", IndexControllers.getSingleDashBoards);
 router.get("/dashboards/admin", IndexControllers.getAllDashBoardsforAdmin);
 router.post("/dashboards/add", IndexControllers.postDashBoard);
 router.post("/dashboards/update", IndexControllers.updateDashBoard);
