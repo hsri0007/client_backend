@@ -400,8 +400,20 @@ module.exports = {
       let final_obj;
       const password = req.body.password;
       const hash = await bcrypt.hash(password, saltRounds);
+      const exist = await User.findOne({
+        email:req.body.email
+      })
+      if(exist){
+       return res.status(409).json({
+         status:409,
+          success: false,
+          message: "error",
+        });
+      }
+    
       const data = await User.create({
-        name: req.body.name,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
         email: req.body.email,
         password: hash,
         type: "TRIAL",
@@ -413,7 +425,8 @@ module.exports = {
 
       return res.status(200).json({
         id: data.id,
-        name: data.name,
+        first_name: data.first_name,
+        last_name: data.last_name,
         email: data.email,
         type: data.type,
         trial_date: data?.trial_date,
@@ -456,7 +469,8 @@ module.exports = {
         console.log(user);
         return res.status(200).json({
           id: user.id,
-          name: user.name,
+          first_name: user.first_name,
+          last_name: user.last_name,
           email: user.email,
           type: user.type,
           accessToken: token,
