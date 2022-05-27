@@ -1,8 +1,10 @@
+"use strict";
 
-const express = require("express");
+var express = require("express");
 
-const router = express.Router();
-const IndexControllers = require("../controllers/indexControllers/indexController");
+var router = express.Router();
+
+var IndexControllers = require("../controllers/indexControllers/indexController");
 
 router.get("/products", IndexControllers.getAllproducts);
 router.get("/users/verify", IndexControllers.verifyuserToken);
@@ -22,9 +24,8 @@ router.post("/dashboard_folders/update", IndexControllers.updateDashBoardFolders
 router.get("/users/admin", IndexControllers.getUsersforAdmin);
 router.post("/users/update", IndexControllers.updateUser);
 router.get("/dashboards", IndexControllers.getAllDashBoards);
-router.get("/dashboards/single/:id", IndexControllers.getSingleDashBoards);
-router.get("/dashboards/admin", IndexControllers.getAllDashBoardsforAdmin);
+router.get("/dashboards/:id", IndexControllers.getSingleDashBoards); // router.get("/dashboards/admin", IndexControllers.getAllDashBoardsforAdmin);
+
 router.post("/dashboards/add", IndexControllers.postDashBoard);
 router.post("/dashboards/update", IndexControllers.updateDashBoard);
-
-module.exports= router;
+module.exports = router;

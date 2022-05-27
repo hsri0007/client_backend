@@ -315,6 +315,7 @@ module.exports = {
     }
   },
   async getSingleDashBoards(req, res) {
+    console.log("im trigerring")
     try {
       return Dashboards.findOne({
         where: {
@@ -342,6 +343,7 @@ module.exports = {
     try {
       return Dashboards.findAll()
         .then((dashboard) => {
+          console.log(dashboard,"hjhhjh")
           return res.status(200).json({
             success: true,
             message: "Dashboards",
