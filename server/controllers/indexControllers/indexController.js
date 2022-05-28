@@ -402,46 +402,38 @@ module.exports = {
       let final_obj;
       const password = req.body.password;
       const hash = await bcrypt.hash(password, saltRounds);
-      const exist = await User.findOne({
-        email:req.body.email
-      })
-      if(exist){
-       return res.status(409).json({
-         status:409,
-          success: false,
-          message: "error",
-        });
-      }
-    
-      const data = await User.create({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        email: req.body.email,
-        password: hash,
-        type: "TRIAL",
-        is_active: 1,
-        trial_date: req.body.trial_date,
-        is_admin: "false",
-      });
-      const token = jwt.sign({ id: data.id, email: req.body.email }, secret);
+    const data = await User.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      password: hash,
+      type: "TRIAL",
+      is_active: 1,
+      trial_date: req.body.trial_date,
+      is_admin: "false",
+    });
+    const token = jwt.sign({ id: data.id, email: req.body.email }, secret);
 
-      return res.status(200).json({
-        id: data.id,
-        first_name: data.first_name,
-        last_name: data.last_name,
-        email: data.email,
-        type: data.type,
-        trial_date: data?.trial_date,
-        accessToken: token,
-        is_admin: data.is_admin,
-      });
-    } catch (error) {
-      console.log(error);
-      return res.status(500).json({
-        success: false,
-        message: error,
-      });
-    }
+    return res.status(200).json({
+      id: data.id,
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      type: data.type,
+      trial_date: data?.trial_date,
+      accessToken: token,
+      is_admin: data.is_admin,
+    });
+
+   }catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: error,
+    });
+  }
+
+     
   },
   async loginUser(req, res) {
     return User.findOne({
